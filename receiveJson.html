@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Weather Send JSON</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <script src="/node_modules/angular/angular.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js"></script>
+  </head>
+  <body  ng-controller="myCtrl as ctrl">
+    <div class="container text-center" >
+      <form name="myForm" class="form " ng-submit="sendPost()">
+        <div class="row ">
+            <label>City</label>
+            <input ng-model="weather.nameInput" type="text" placeholder="insert your name">
+        </div>
+        <div class="row">
+          <label>Country</label>
+          <input ng-model="weather.countryInput" type="text" placeholder="insert your country">
+        </div>
+        <button type="submit"  ng-disabled="signInForm.$invalid" class="btn btn-primary" ng-click="sendJson()">Che tempo farà?</button>
+      </form>
+      <div class="row result" ng-show="showEvent">
+        <table class="table table-striped">
+          <thead>
+              <tr>
+                <th>#</th>
+                <th>Città</th>
+                <th>Descrizione</th>
+              </tr>
+            </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Risultato:</th>
+              <td>{{ myData.name }}</td>
+              <td>{{ myData.weather[0].description}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
